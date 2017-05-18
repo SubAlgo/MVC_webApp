@@ -27,6 +27,11 @@ module.exports = function() {
 
 
   require('../app/routes/index.routes')(app);
+
+//-----Set static file------
+app.use(express.static('./public'));
+//-----Set static file------
+
   return app;
 
 };
