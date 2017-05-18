@@ -20,6 +20,11 @@ module.exports = function() {
   }));
   app.use(bodyParser.json());
 
+  //-----Set Jade View------
+  app.set('views', './app/views');
+  app.set('view engine', 'jade');
+  //-----Set Jade View------
+
 
   require('../app/routes/index.routes')(app);
   return app;
