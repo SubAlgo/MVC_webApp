@@ -1,0 +1,9 @@
+https://www.youtube.com/watch?v=1ucxob3zL2Y&index=22&list=PLtM3znnbMbVXD0fygCTsblC2sLZvSPY8g
+Set Environment Dev or Production
+Windows CMD
+>set NODE_ENV=development
+>set NODE_ENV=production
+
+Linux/MAC (UNIX) shell
+$ export NODE_ENV=development
+$ export NODE_ENV=production
