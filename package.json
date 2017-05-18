@@ -1,0 +1,19 @@
+{
+  "name": "test_mvc",
+  "version": "0.0.1",
+  "description": "Test build concept MVC",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "Web_MVC",
+    "MVC_Concept"
+  ],
+  "author": "T.Korn",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
