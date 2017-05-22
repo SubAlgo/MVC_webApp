@@ -18,7 +18,8 @@ module.exports = function() {
   }
 
   app.use(bodyParser.urlencoded({
-    extended: true
+    extended: true //false -> string กับ array
+                   //true -> ประเภทใดก็ได้ (เช่น nested array*array หลายมิติ)
   }));
   app.use(bodyParser.json());
 
@@ -27,14 +28,16 @@ module.exports = function() {
   app.set('view engine', 'jade');
   //-----Set Jade View------
 
-
+  //-----Set Routes------
   require('../app/routes/index.routes')(app);
+  require('../app/routes/user.routes')(app);
+  //-----Set Routes------
 
   //-----Set Sass Compile------
   app.use(sass({
     src: './sass',
     dest: './public/css',
-    outputStyle: 'expanded', //mode[compressed, compact, expanded]
+    outputStyle: 'compressed', //mode[compressed, compact, expanded]
     prefix: '/css', //ตัดไม่ต้องสร้าง/css/..
     debug: true
     //indentesSyntax: true กรณีใช้Syntax แบบ Sass ที่อาศัยการย่อหน้า

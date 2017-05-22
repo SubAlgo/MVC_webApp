@@ -1,0 +1,3 @@
+Step1: สร้าง Routes (user.routes)
+Step2: สร้าง controller (user.controller.js)
+Step3: config express.js [require('../app/routes/user.routes')(app);]

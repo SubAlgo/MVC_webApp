@@ -1,6 +1,6 @@
 exports.render = function(req, res){
 	res.render('index', {
-		'title' : 'Hello World By Jade',
-		'message' : 'Message HelloWorld render by Jade!!'
+		'title1' : 'Hello World By Jade',
+		'message1' : 'Message HelloWorld render by Jade!!'
 	});
 };
