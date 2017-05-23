@@ -4,6 +4,7 @@ var compression = require('compression');
 var bodyParser = require('body-parser');
 
 var sass = require('node-sass-middleware');
+var validator = require('express-validator');
 /*
 https://www.youtube.com/watch?v=93GfL42eUv0&list=PLtM3znnbMbVXD0fygCTsblC2sLZvSPY8g&index=19
 อธิบายการทำงาน
@@ -22,6 +23,7 @@ module.exports = function() {
                    //true -> ประเภทใดก็ได้ (เช่น nested array*array หลายมิติ)
   }));
   app.use(bodyParser.json());
+  app.use(validator()); //ใช้สำหรับตรวจสอบค่า ใส่ต่อจาก bodyParser ทันที
 
   //-----Set Jade View------
   app.set('views', './app/views');

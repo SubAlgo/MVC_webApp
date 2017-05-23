@@ -1,0 +1,22 @@
+express-validator
+ดูเพิ่มเติมได้ที่ https://github.com/chriso/validator.js
+
+ใช้เพื่อ check ค่าต่าง เช่น
+
+#File express.js
+- var validator = require('express-validator');
+app.use(bodyParser.json());
+-> app.use(validator()); //ใช้สำหรับตรวจสอบค่า ใส่ต่อจาก bodyParser ทันที
+
+#File user.controller.js
+
+req.checkBody('email', 'Invalid email').notEmpty().isEmail();
+req.sanitizeBody('email').normalizeEmail();
+var errors = req.validationErrors();
+if (errors) {
+  res.render('index',{
+    title: 'There have been validation errors: ' + JSON.stringify(errors),
+    isLoggedIn: false
+  });
+  return;
+}
