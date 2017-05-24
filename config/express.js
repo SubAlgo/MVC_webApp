@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 
 var sass = require('node-sass-middleware');
 var validator = require('express-validator');
+var cookieSession = require('cookie-session');
 /*
 https://www.youtube.com/watch?v=93GfL42eUv0&list=PLtM3znnbMbVXD0fygCTsblC2sLZvSPY8g&index=19
 อธิบายการทำงาน
@@ -17,6 +18,11 @@ module.exports = function() {
   } else {
     app.use(compression('production'));
   }
+
+  app.use(cookieSession({
+    name: 'session', //ใส่ชื่ออะไรก็ได้ เป็นชื่อ Session ของเรา
+    keys: ['secret_key1', 'secret_key2']
+  }));
 
   app.use(bodyParser.urlencoded({
     extended: true //false -> string กับ array

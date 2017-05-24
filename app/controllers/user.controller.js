@@ -1,3 +1,5 @@
+
+//-------login-------------
 exports.login = function(req, res) {
   /*
   console.log(req.body);
@@ -15,16 +17,31 @@ exports.login = function(req, res) {
     });
     return;
   }
+  //---Manage session---
+  if (req.body.remember === 'remember') {
+      req.session.remember = true;
+      req.session.email = req.body.email;
+      req.sessionOptions.maxAge = 600; //milliseconds
+  }
+  //---Manage session---
 
   res.render('index', {
     title: 'Logged in as ' + req.body.email,
     isLoggedIn: true
   });
+  console.log('Print body.remember: ' + req.body.remember);
+  console.log('Print Session.remember: ' + req.session.remember);
+  console.log('Print Session.email: ' + req.session.email);
 };
+//-------login-------------
 
+
+//-------logout-------------
 exports.logout = function(req, res) {
+  req.session = null; // Destroy session
   res.render('index', {
     title: 'See you again later',
     isLoggedIn: false
   });
 };
+//-------logout-------------

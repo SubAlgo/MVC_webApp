@@ -13,14 +13,16 @@ html
     else
       form(name='login', method='POST', action='login')
         div
-          label(for='email') Email
+          label(for='email') Email  
           input(name='email', type='email', placeholder='youremail@email.com')
         div
-          label(for='password') Password
+          label(for='password') Password  
           input(name='password', type='password', placeholder='password')
+        div
+          input(name='remember', type='checkbox', value='remember')
+          | Remember Me
         div
           input(type='submit', value='Login')
             
-    
     //h2= message
     //img(src='./img/logo.jpg', alt='Logo')
