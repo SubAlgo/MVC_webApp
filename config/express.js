@@ -5,7 +5,9 @@ var bodyParser = require('body-parser');
 
 var sass = require('node-sass-middleware');
 var validator = require('express-validator');
-var cookieSession = require('cookie-session');
+//var cookieSession = require('cookie-session');
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 /*
 https://www.youtube.com/watch?v=93GfL42eUv0&list=PLtM3znnbMbVXD0fygCTsblC2sLZvSPY8g&index=19
 อธิบายการทำงาน
@@ -19,9 +21,27 @@ module.exports = function() {
     app.use(compression('production'));
   }
 
+  /*
   app.use(cookieSession({
     name: 'session', //ใส่ชื่ออะไรก็ได้ เป็นชื่อ Session ของเรา
     keys: ['secret_key1', 'secret_key2']
+  }));
+  */
+  app.use(session({
+
+    secret: 'secret_key',
+    resave: false,
+    saveUninitialized: true
+
+    //---------Config Redis---------
+    /*store: new RedisStore({
+      host: 'localhost',
+      port: 6379,
+      db: 2,
+      pass: 'redis_password'
+    }),
+    secret: 'secret_key'
+    */
   }));
 
   app.use(bodyParser.urlencoded({
